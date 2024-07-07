@@ -1,0 +1,78 @@
+<!-- version of html -->
+<!DOCTYPE html>
+<!-- root element head  -->
+<html>
+  <!-- Meta information -->
+  <head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
+    <!-- appearse in the browser -->
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+            import { getFirestore, setDoc, addDoc, doc, collection }from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBowhB_1NmaXYYpa3Tz8HOfDJV2hEaAuWw",
+              authDomain: "todolist-task-1e8e1.firebaseapp.com",
+              projectId: "todolist-task-1e8e1",
+              storageBucket: "todolist-task-1e8e1.appspot.com",
+              messagingSenderId: "320777042912",
+              appId: "1:320777042912:web:b4346ff9a9a0d2de57c985",
+              measurementId: "G-L9KNE5015E"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            submitbutton.addEventListener('click', (e) => {
+
+              var Task = document.getElementById('input-box').value;
+                addDoc(collection(db, "task"), {
+                    Task:Task
+                       });
+                   alert("added");
+            });
+    </script>
+
+    <div class="container">
+      <!--why not error?-->
+      <div class="todo-app">
+        <h2>To-Do List <img src="images/icon.png" /></h2>
+        <!-- when we close with  > only ?-->
+
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" />
+          <button onclick="addTask()" id="submitbutton">Add</button>
+          <!--onclick is bulit in function trigger the java sript method addTask-->
+        </div>
+
+        <ul id="list-container">
+          <!-- ul is unorderd list -->
+          <!--  <li class="cheaked"> Task 1</li>>
+       <li>Task 2</li> >
+        <li>Task 3</li>>-->
+        </ul>
+        <!-- <button id="edit"> Edit </button>     -->
+        <div>
+          <button id="doneAll">Yaayy, Done all</button>
+          <button id="deletAll">Delete all</button>
+        </div>
+      </div>
+      <!-- to do app div-->
+    </div>
+    <!-- container div -->
+    <script src="script.js"></script>
+    <!-- javaScript last line in the body -->
+
+    <!-- Place this script tag in the HTML body section -->
+  </body>
+</html>
